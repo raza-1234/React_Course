@@ -1,0 +1,8 @@
+# do not add node_modules folder to git
+/node_modules
+
+# do not add .parcel-cache folder to git
+/.parcel-cache
+
+# do not add dist folder to git
+/dist
