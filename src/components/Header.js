@@ -1,19 +1,19 @@
-import React, {useState} from 'react'
-import Navbar from './Navbar';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Menu from './Menu';
+import logo from '../assets/resturant-logo.jpg';
 
 const Header = () => {
-
-  const [flag, setFlag] = useState(false);
-
   return (
-    <>
-      <h2>I am Header component</h2>
-      <button onClick={() => setFlag(!flag)}>
-        change flag value
-      </button>
-      <Navbar flag={flag}/>
-      <p id={flag + 'id'}>hello</p>
-    </>
+    <div className='header container'>
+      <Link to='/'>
+        <img src={logo} alt='logo'/>
+      </Link>
+      <div className='header-menu'>
+        <Menu/>
+      </div>
+    </div>
   )
 }
 

@@ -1,16 +1,19 @@
 import React from "react";
 
 import Header from "./components/Header";
-import About from "./components/About"
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
 
-const App = () => {
+const AppLayout = () => {
   return (
     <React.Fragment>
-      {/* <h1> I am App Component. </h1> */}
       <Header/>
-      <About name='ahmed raza butt' age='12'/>
+      <main className="main">
+        <Outlet/>
+      </main>
+      <Footer/>
     </React.Fragment>
   );
 }
 
-export default App;
+export default AppLayout;

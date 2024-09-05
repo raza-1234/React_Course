@@ -1,7 +1,36 @@
+import './index.css';
+
 import React from "react";
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./src/App"
+import About from "./src/components/About";
+import Profile from './src/components/Profile';
+import Contact from './src/components/Contact';
+import ErrorPage from './src/components/ErrorPage';
+import AppLayout from './src/App';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: '/about',
+        element: <About/>
+      },
+      {
+        path: '/contact',
+        element: <Contact/>
+      },
+      {
+        path: '/profile',
+        element: <Profile/>
+      }
+    ]
+  }
+])
 
 // const h1 = React.createElement('h1', {}, 'heading 1')
 // const h2 = React.createElement('h2', {}, 'heading 2')
@@ -31,4 +60,4 @@ import App from "./src/App"
 
 const root = document.getElementById('root')
 const reactRoot = ReactDOM.createRoot(root)
-reactRoot.render(<App/>)
+reactRoot.render(<RouterProvider router={router}/>)
