@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 
-import App from "./App";
+import App from "./src/App"
 
 // const h1 = React.createElement('h1', {}, 'heading 1')
 // const h2 = React.createElement('h2', {}, 'heading 2')
