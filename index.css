@@ -43,3 +43,18 @@
   height: 100vh;
   text-transform: capitalize;
 }
+
+.shimmer-wrapper {
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.shimmer {
+  height: 200px;
+  width: 200px;
+  background-color: #E7DBC7;
+}

@@ -1,19 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
-import Header from "./components/Header";
-import { Outlet } from "react-router-dom";
-import Footer from "./components/Footer";
 
-const AppLayout = () => {
+import ShimmerUi from "./components/ShimmerUi";
+
+const App = () => {
+  
   return (
-    <React.Fragment>
-      <Header/>
-      <main className="main">
-        <Outlet/>
-      </main>
-      <Footer/>
-    </React.Fragment>
+    <>
+      <ShimmerUi/>
+    </>
   );
 }
 
-export default AppLayout;
+export default App;

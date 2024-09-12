@@ -1,14 +1,26 @@
 import './index.css';
 
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import About from "./src/components/About";
+// import About from "./src/components/About";
 import Profile from './src/components/Profile';
 import Contact from './src/components/Contact';
 import ErrorPage from './src/components/ErrorPage';
-import AppLayout from './src/App';
+import AppLayout from './src/components/Layout';
+import App from './src/App';
+import { lazy } from 'react';
+
+//lazy loading
+//dynamic loading
+//dynamic import
+
+const About = lazy(() => {
+  console.log('ppppp', import('./src/components/About'))
+  return import('./src/components/About')
+})
+console.log('>>>>>>', About)
 
 const router = createBrowserRouter([
   {
@@ -17,15 +29,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       {
-        path: '/about',
-        element: <About/>
+        path: '',
+        element: <App/>
       },
       {
-        path: '/contact',
+        path: 'about',
+        element: < Suspense fallback={<p>abhi lazy load ho rahi hain changes</p>}><About/></Suspense>
+      },
+      {
+        path: 'contact',
         element: <Contact/>
       },
       {
-        path: '/profile',
+        path: 'profile',
         element: <Profile/>
       }
     ]
