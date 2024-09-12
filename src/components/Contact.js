@@ -2,12 +2,9 @@ import React, {useState} from 'react'
 
 const Section = ({description, clickHandler, show}) => {
 
-  function clickedHandler() {
-    clickHandler()
-  }
   return(
     <>
-      <button onClick={clickedHandler}>{show ? 'hide': 'show'}</button>
+      <button onClick={clickHandler}>{show ? 'hide': 'show'}</button>
       {
         show && 
         <p>{description}</p>
@@ -17,35 +14,56 @@ const Section = ({description, clickHandler, show}) => {
 }
 
 const Contact = () => {
-  const [showSection1, setshowSection1] = useState(false);
-  const [showSection2, setshowSection2] = useState(false);
-  const [showSection3, setshowSection3] = useState(false);
+  const [showSection, setshowSection] = useState('');
 
-  function section1ClickHandler() {
-    setshowSection1(!showSection1);
-    setshowSection2(false);
-    setshowSection3(false);
+  const sectionsConfig = {
+    sectionOne: 'SECTION_1',
+    sectionTwo: 'SECTION_2',
+    sectionThree: 'SECTION_3'
   }
 
-  function section2ClickHandler(){
-    setshowSection2(!showSection2);
-    setshowSection1(false);
-    setshowSection3(false);
+  const section1ClickHandler = () => {
+    if (showSection === sectionsConfig.sectionOne){
+      setshowSection('')
+      return;
+    }
+    setshowSection(sectionsConfig.sectionOne)
   }
 
-  function section3ClickHandler(){
-    setshowSection3(!showSection3);
-    setshowSection2(false);
-    setshowSection1(false);
+  const section2ClickHandler = () => {
+    if (showSection === sectionsConfig.sectionTwo){
+      setshowSection('')
+      return;
+    }
+    setshowSection(sectionsConfig.sectionTwo)
+  }
+
+  const section3ClickHandler = () => {
+    if (showSection === sectionsConfig.sectionThree){
+      setshowSection('')
+      return;
+    }
+    setshowSection(sectionsConfig.sectionThree)
   }
 
   return (
     <div>
-        <Section show={showSection1} clickHandler = {section1ClickHandler} description={'I am description 1'}/>
+      <Section show={showSection === sectionsConfig.sectionOne} 
+        clickHandler = {section1ClickHandler} 
+        description={'I am description 1'}
+      />
       <br/>
-        <Section show={showSection2} clickHandler = {section2ClickHandler} description={'I am description 2'}/>
+      <Section 
+        show={showSection === sectionsConfig.sectionTwo} 
+        clickHandler = {section2ClickHandler} 
+        description={'I am description 2'}
+      />
       <br/>
-        <Section show={showSection3} clickHandler = {section3ClickHandler} description={'I am description 3'}/>
+      <Section 
+        show={showSection === sectionsConfig.sectionThree} 
+        clickHandler = {section3ClickHandler}
+        description={'I am description 3'}
+      />
     </div>
   )
 }
