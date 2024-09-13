@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import UserContext from '../context/UserContext'
 
 const Section = ({description, clickHandler, show}) => {
 
@@ -15,6 +16,9 @@ const Section = ({description, clickHandler, show}) => {
 
 const Contact = () => {
   const [showSection, setshowSection] = useState('');
+
+  const {name, email, setName} = useContext(UserContext);
+  console.log('i am in contactttt')
 
   const sectionsConfig = {
     sectionOne: 'SECTION_1',
@@ -64,6 +68,11 @@ const Contact = () => {
         clickHandler = {section3ClickHandler}
         description={'I am description 3'}
       />
+      <p>name: {name}</p>
+      <p>email: {email}</p>
+      <input value={name} onChange={() => {
+
+      }}/>
     </div>
   )
 }
