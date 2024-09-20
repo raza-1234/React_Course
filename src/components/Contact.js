@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
 import UserContext from '../context/UserContext'
+import { useSelector } from 'react-redux'
 
 const Section = ({description, clickHandler, show}) => {
 
@@ -16,9 +17,8 @@ const Section = ({description, clickHandler, show}) => {
 
 const Contact = () => {
   const [showSection, setshowSection] = useState('');
-
   const {name, email, setName} = useContext(UserContext);
-  console.log('i am in contactttt')
+  const contactSlice = useSelector(store => store.contact.info);
 
   const sectionsConfig = {
     sectionOne: 'SECTION_1',
@@ -73,6 +73,12 @@ const Contact = () => {
       <input value={name} onChange={() => {
 
       }}/>
+      <ul>
+        Total Addresses: {contactSlice.length}
+        {contactSlice.map((address, index) => (
+          <li key={index}>{address}</li>
+        ))}
+      </ul>
     </div>
   )
 }
